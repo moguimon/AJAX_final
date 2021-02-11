@@ -49,7 +49,7 @@ String.prototype.transformaCaracteresEspeciales = function() {
     estados.innerHTML += "[" + milisegundos + " mseg.] " + estados[peticion.readyState] + "<br/>";
 
     if(peticion.readyState == 4) {
-      if(peticion.estados == 200) {
+      if(peticion.status == 200) {
         var contenidos = document.getElementById('contenidos');
         contenidos.innerHTML = peticion.responseText.transformaCaracteresEspeciales();
       }
