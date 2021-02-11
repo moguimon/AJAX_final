@@ -44,7 +44,7 @@ function muestra_contenido() {
   if(solicitud.readyState == 4) {
     if(peticion.status == 200) {
       var contenidos = document.getElementById("contenidos");
-      contenidos.innerHTML = solicitud.responseText.transformaCaract();
+      contenidos.innerHTML = solicitud.responseText;//.transformaCaract();
     }
     muestra_cabeceras();
     muestra_estado();
@@ -53,7 +53,7 @@ function muestra_contenido() {
   
 function muestra_cabeceras() {
   var cabeceras = document.getElementById("cabeceras");
-  cabeceras.innerHTML = solicitud.getAllResponseHeaders().transformaCaract();//se muestran las cabeceras
+  cabeceras.innerHTML = solicitud.getAllResponseHeaders();//.transformaCaract();//se muestran las cabeceras
 }
   
 function muestra_estado() {
