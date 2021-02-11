@@ -51,7 +51,7 @@ String.prototype.transformaCaracteresEspeciales = function() {
     if(peticion.readyState == 4) {
       if(peticion.status == 200) {
         var contenidos = document.getElementById('contenidos');
-        contenidos.innerHTML = peticion.responseText;.transformaCaracteresEspeciales();
+        contenidos.innerHTML = peticion.responseText.transformaCaracteresEspeciales();
       }
       mostrar_Cabeceras();
       mostrar_Estados();
