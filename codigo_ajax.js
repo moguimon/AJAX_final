@@ -28,7 +28,7 @@ String.prototype.transformaCaract = function(){
     }
 
     // Preparar función de respuesta
-    peticion.onreadystatechange = showContent;
+    peticion.onreadystatechange = muestra_contenido;
 
     // Realizar petición
     initTime = new Date();
@@ -39,29 +39,28 @@ String.prototype.transformaCaract = function(){
     peticion.send(null);
   }
   
-  function showContent() {
-    var finalTime = new Date();
-    var milisegundos = finalTime - initTime;
-
-    var estados = document.getElementById('estados');
-    estados.innerHTML += "[" + milisegundos + " mseg.] " + states[peticion.readyState] + "<br/>";
-
-    if(peticion.readyState == 4) {
-      if(peticion.status == 200) {
-        var contenidos = document.getElementById('contenidos');
-        contenidos.innerHTML = peticion.responseText.transformaCaracteresEspeciales();
-      }
-      showHeads();
-      showStateCod();
+function muestra_contenido() {
+  var tiempo_fin = new Date();
+  var dif_tiempo = tiempo_fin-tiempo_inic;
+  var estados = document.getElementById("estados");
+  // modifico el DOM
+  estados.innerHTML += "[" + dif_tiempo + " miliseg.] " + estados[solicitud.readyState] + "<br/>";
+  if(solicitud.readyState == 4) {
+    if(peticion.status == 200) {
+      var contenidos = document.getElementById("contenidos");
+      contenidos.innerHTML = solicitud.responseText;//.transformaCaract();
     }
+    muestra_cabeceras();
+    muestra_estado();
   }
+}
   
-  function showHeads() {
-    var cabeceras = document.getElementById('cabeceras');
-    cabeceras.innerHTML = peticion.getAllResponseHeaders().transformaCaracteresEspeciales();
-  }
+function muestra_cabeceras() {
+  var cabeceras = document.getElementById("cabeceras");
+  cabeceras.innerHTML = solicitud.getAllResponseHeaders();//.transformaCaract();//se muestran las cabeceras
+}
   
-  function showStateCod() {
-    var codigo = document.getElementById('codigo');
-    codigo.innerHTML = peticion.status + "<br/>" + peticion.statusText;
-  }
+function muestra_estado() {
+  var codigo = document.getElementById("codigo");
+  codigo.innerHTML = solicitud.status + "<br/>" + solicitud.statusText;// se muestran los estados
+}
