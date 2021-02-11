@@ -1,4 +1,4 @@
-// Se quitan los caracteres especiales
+// Se quitan los caracteres especiales mediante el uso de la librería prototype
 String.prototype.transformaCaracteresEspeciales = function() {
     return unescape(escape(this).
             replace(/%0A/g, '<br/>').
@@ -9,7 +9,7 @@ String.prototype.transformaCaracteresEspeciales = function() {
   var tiempo_inicial = 0;
   
   window.onload = function() {
-    // Cargar la URL de la página en el campo Text
+    // Cargar la URL de la página en el campo recurso del formulario
     var recurso = document.getElementById('recurso');
     recurso.value = location.href;
 
@@ -18,11 +18,11 @@ String.prototype.transformaCaracteresEspeciales = function() {
   }
   
   function cargar_Contenido() {
-    // Borrar datos anteriores
+    // Borrar datos anteriores de los contenedores
     document.getElementById('contenidos').innerHTML = "";
     document.getElementById('estados').innerHTML = "";
 
-    // Instanciar objeto XMLHttpRequest
+    // Si hay peticiones ,instancio el XHR y realizo la solicitud al servidor
     if(window.XMLHttpRequest) {
       peticion = new XMLHttpRequest();
     } else {
@@ -60,7 +60,7 @@ String.prototype.transformaCaracteresEspeciales = function() {
   
   function mostrar_Cabeceras() {
     var cabeceras = document.getElementById('cabeceras');
-    cabeceras.innerHTML = peticion.getAllResponseHeaders();.transformaCaracteresEspeciales();
+    cabeceras.innerHTML = peticion.getAllResponseHeaders().transformaCaracteresEspeciales();
   }
   
   function mostrar_Estados() {
