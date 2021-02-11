@@ -19,8 +19,8 @@ String.prototype.transformaCaracteresEspeciales = function() {
   
   function cargar_Contenido() {
     // Borrar datos anteriores
-    document.getElementById('contenidos').innerHTML = "";
-    document.getElementById('estados').innerHTML = "";
+    //document.getElementById('contenidos').innerHTML = "";
+    //document.getElementById('estados').innerHTML = "";
 
     // Instanciar objeto XMLHttpRequest
     if(window.XMLHttpRequest) {
