@@ -6,7 +6,7 @@ String.prototype.transformaCaracteresEspeciales = function() {
             replace(/%3E/g, '&gt;'));
   }
   var states = ['No inicializado', 'Cargando', 'Cargado', 'Interactivo', 'Completado'];
-  var initTime = 0;
+  var tiempo_inic = 0;
   
   window.onload = function() {
     // Cargar la URL de la página en el campo Text
