@@ -5,8 +5,8 @@ String.prototype.transformaCaracteresEspeciales = function() {
             replace(/%3C/g, '&lt;').
             replace(/%3E/g, '&gt;'));
   }
-  var states = ['No inicializado', 'Cargando', 'Cargado', 'Interactivo', 'Completado'];
-  var initTime = 0;
+  var estados = ['No inicializado', 'Cargando', 'Cargado', 'Interactivo', 'Completado'];
+  var tiempo_inicial = 0;
   
   window.onload = function() {
     // Cargar la URL de la página en el campo Text
@@ -14,27 +14,26 @@ String.prototype.transformaCaracteresEspeciales = function() {
     recurso.value = location.href;
 
     // Cargar el recurso solicitado cuando se haga 'clic' en el botón
-    document.getElementById('enviar').onclick = loadContent;
+    document.getElementById('enviar').onclick = cargar_Contenido;
   }
   
-  function loadContent() {
+  function cargar_Contenido() {
     // Borrar datos anteriores
     document.getElementById('contenidos').innerHTML = "";
     document.getElementById('estados').innerHTML = "";
 
     // Instanciar objeto XMLHttpRequest
     if(window.XMLHttpRequest) {
-    peticion = new XMLHttpRequest();
-    }
-      else {
+      peticion = new XMLHttpRequest();
+    } else {
         peticion = new ActiveXObject("Microsoft.XMLHTTP");
     }
 
     // Preparar función de respuesta
-    peticion.onreadystatechange = showContent;
+    peticion.onreadystatechange = mostrar_Contenido;
 
     // Realizar petición
-    initTime = new Date();
+    tiempo_actual = new Date();
     
     var recurso = document.getElementById('recurso').value;
     
@@ -42,9 +41,9 @@ String.prototype.transformaCaracteresEspeciales = function() {
     peticion.send(null);
   }
   
-  function showContent() {
-    var finalTime = new Date();
-    var milisegundos = finalTime - initTime;
+  function mostrar_Contenido() {
+    var tiempo_final = new Date();
+    var milisegundos = tiempo_final - tiempo_actual;
 
     var estados = document.getElementById('estados');
     estados.innerHTML += "[" + milisegundos + " mseg.] " + states[peticion.readyState] + "<br/>";
@@ -54,17 +53,17 @@ String.prototype.transformaCaracteresEspeciales = function() {
         var contenidos = document.getElementById('contenidos');
         contenidos.innerHTML = peticion.responseText.transformaCaracteresEspeciales();
       }
-      showHeads();
-      showStateCod();
+      mostrar_Cabeceras();
+      mostrar_Estados();
     }
   }
   
-  function showHeads() {
+  function mostrar_Cabeceras() {
     var cabeceras = document.getElementById('cabeceras');
     cabeceras.innerHTML = peticion.getAllResponseHeaders().transformaCaracteresEspeciales();
   }
   
-  function showStateCod() {
+  function mostrar_Estados() {
     var codigo = document.getElementById('codigo');
     codigo.innerHTML = peticion.status + "<br/>" + peticion.statusText;
   }
