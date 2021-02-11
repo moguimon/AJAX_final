@@ -16,9 +16,9 @@ window.onload = function(){
 
 function cargar_contenido(){
   // Borro el contenido de los contenedores
-  document.getElementById("contenidos").innerHTML = "";
+  document.getElementById("contenidos").innerHTML = " ";
   //document.getElementById("cabeceras").innerHTML = " ";
-  document.getElementById("estados").innerHTML = "";
+  document.getElementById("estados").innerHTML = " ";
   //document.getElementById("codigo").innerHTML = " ";
   // Si hay peticiones ,creo el XHR y realizo la solicitud al servidor
   if(window.XMLHttpRequest) {
