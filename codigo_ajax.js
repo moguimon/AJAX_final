@@ -46,7 +46,7 @@ String.prototype.transformaCaracteresEspeciales = function() {
     var milisegundos = tiempo_final - tiempo_actual;
 
     var estados = document.getElementById('estados');
-    estados.innerHTML += "[" + milisegundos + " mseg.] " + states[peticion.readyState] + "<br/>";
+    estados.innerHTML += "[" + milisegundos + " mseg.] " + estados[peticion.readyState] + "<br/>";
 
     if(peticion.readyState == 4) {
       if(peticion.status == 200) {
