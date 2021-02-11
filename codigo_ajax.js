@@ -1,7 +1,10 @@
-//Se quitan los caracteres especiales
-String.prototype.transformaCaract = function(){
-  return unescape(escape(this).replace(/%0A/g, "<br/>").replace(/%3C/g, "&lt;").replace(/%3E/g, "&gt;"));
-}
+// Se quitan los caracteres especiales
+String.prototype.transformaCaracteresEspeciales = function() {
+    return unescape(escape(this).
+            replace(/%0A/g, '<br/>').
+            replace(/%3C/g, '&lt;').
+            replace(/%3E/g, '&gt;'));
+  }
   var states = ['No inicializado', 'Cargando', 'Cargado', 'Interactivo', 'Completado'];
   var initTime = 0;
   
