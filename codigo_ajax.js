@@ -19,8 +19,8 @@ String.prototype.transformaCaracteresEspeciales = function() {
   
   function cargar_Contenido() {
     // Borrar datos anteriores
-    //document.getElementById('contenidos').innerHTML = "";
-    //document.getElementById('estados').innerHTML = "";
+    document.getElementById('contenidos').innerHTML = "";
+    document.getElementById('estados').innerHTML = "";
 
     // Instanciar objeto XMLHttpRequest
     if(window.XMLHttpRequest) {
@@ -51,7 +51,7 @@ String.prototype.transformaCaracteresEspeciales = function() {
     if(peticion.readyState == 4) {
       if(peticion.status == 200) {
         var contenidos = document.getElementById('contenidos');
-        contenidos.innerHTML = peticion.responseText;//.transformaCaracteresEspeciales();
+        contenidos.innerHTML = peticion.responseText;.transformaCaracteresEspeciales();
       }
       mostrar_Cabeceras();
       mostrar_Estados();
@@ -60,7 +60,7 @@ String.prototype.transformaCaracteresEspeciales = function() {
   
   function mostrar_Cabeceras() {
     var cabeceras = document.getElementById('cabeceras');
-    cabeceras.innerHTML = peticion.getAllResponseHeaders();//.transformaCaracteresEspeciales();
+    cabeceras.innerHTML = peticion.getAllResponseHeaders();.transformaCaracteresEspeciales();
   }
   
   function mostrar_Estados() {
