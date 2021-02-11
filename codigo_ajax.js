@@ -33,7 +33,7 @@ String.prototype.transformaCaracteresEspeciales = function() {
     peticion.onreadystatechange = mostrar_Contenido;
 
     // Realizar petición
-    tiempo_actual = new Date();
+    tiempo_inicial = new Date();
     
     var recurso = document.getElementById('recurso').value;
     
@@ -43,7 +43,7 @@ String.prototype.transformaCaracteresEspeciales = function() {
   
   function mostrar_Contenido() {
     var tiempo_final = new Date();
-    var milisegundos = tiempo_final - tiempo_actual;
+    var milisegundos = tiempo_final - tiempo_inicial;
 
     var estados = document.getElementById('estados');
     estados.innerHTML += "[" + milisegundos + " mseg.] " + estados[peticion.readyState] + "<br/>";
